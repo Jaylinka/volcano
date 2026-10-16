@@ -1,0 +1,9 @@
+{
+  "leaderboard": {
+    "stats": [
+      { "key": "score", "label": "Score", "order": "highest" },
+      { "key": "gems", "label": "Gems", "order": "highest" },
+      { "key": "metres", "label": "Metres run", "order": "highest" }
+    ]
+  }
+}

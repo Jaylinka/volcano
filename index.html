@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0b0710" />
+<title>Volcano</title>
+<meta name="description" content="Volcano — an endless eruption runner on start.ng. Dodge the rocks, duck the fireballs and grab the gems before the mountain blows." />
+<link rel="icon" href="favicon.png" />
+<link rel="apple-touch-icon" href="favicon.png" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<main id="stage">
+  <canvas id="game" aria-label="Volcano game canvas"></canvas>
+
+  <!-- ===================== in-game HUD ===================== -->
+  <header id="hud" class="hidden">
+    <div class="hud-group">
+      <div class="stat">
+        <span id="score">0</span>
+        <small>score</small>
+      </div>
+      <div class="stat tiny">
+        <span id="bestHud">0</span>
+        <small>best</small>
+      </div>
+    </div>
+    <div class="hud-group">
+      <div id="lives" class="lives" aria-label="lives"></div>
+      <button id="pauseBtn" class="icon-btn" type="button" title="Pause (P)">❚❚</button>
+      <button id="muteBtn" class="icon-btn" type="button" title="Mute (M)">🔊</button>
+    </div>
+  </header>
+
+  <!-- ===================== start menu ====================== -->
+  <section id="menu" class="overlay">
+    <div class="panel">
+      <h1>Volcano</h1>
+      <p class="tag">The mountain is about to blow. Outrun the eruption — hop the lava rocks, duck the fireballs, grab the gems.</p>
+
+      <!-- who is playing, from start.ng -->
+      <div id="playerChip" class="pchip hidden">
+        <img id="playerFace" alt="" />
+        <div class="pinfo">
+          <b id="playerName"></b>
+          <span id="playerAccount"></span>
+        </div>
+        <button id="playerSignIn" class="btn mini hidden" type="button">Sign in</button>
+      </div>
+      <p id="playerNote" class="pnote hidden">You run as your start.ng character.</p>
+
+      <div class="btn-row">
+        <button id="playBtn" class="btn primary" type="button">▶ Play</button>
+        <button id="randomBtn" class="btn ghost" type="button">🎲 Surprise me</button>
+      </div>
+      <p class="hint">
+        <strong>Space</strong> / <strong>↑</strong> / tap upper screen — jump (tap again = double jump)<br />
+        <strong>↓</strong> / hold lower screen — duck &nbsp;·&nbsp; <strong>P</strong> — pause &nbsp;·&nbsp; <strong>M</strong> — mute
+      </p>
+      <p class="best-line">Your best here: <strong id="menuBest">0</strong></p>
+
+      <div id="boardWrap" class="board hidden">
+        <h3>Top runs <small id="boardScope">start.ng</small></h3>
+        <ol id="board"></ol>
+        <button id="boardRefresh" class="linky" type="button">refresh</button>
+      </div>
+    </div>
+
+    <div class="panel slim">
+      <h3 class="slim-title">Dressing room</h3>
+      <canvas id="preview" width="110" height="140" aria-label="Character preview"></canvas>
+      <div id="customizer"></div>
+      <button id="useStartngLook" class="btn ghost mini wide hidden" type="button">↺ Use my start.ng look</button>
+    </div>
+  </section>
+
+  <!-- ===================== paused =========================== -->
+  <section id="pauseOverlay" class="overlay hidden">
+    <div class="panel narrow">
+      <h2>Paused</h2>
+      <p class="tag">Catch your breath — the lava is patient.</p>
+      <div class="btn-row column">
+        <button id="resumeBtn" class="btn primary" type="button">▶ Resume</button>
+        <button id="restartBtn" class="btn ghost" type="button">↻ Restart</button>
+        <button id="quitBtn" class="btn ghost" type="button">⌂ Main menu</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== game over ======================== -->
+  <section id="overOverlay" class="overlay hidden">
+    <div class="panel narrow">
+      <h2>The mountain won</h2>
+      <p id="newBest" class="badge hidden">★ New best score ★</p>
+      <div class="final-stats">
+        <div class="stat">
+          <span id="finalScore">0</span>
+          <small>score</small>
+        </div>
+        <div class="stat tiny">
+          <span id="finalBest">0</span>
+          <small>best</small>
+        </div>
+      </div>
+      <p id="scoreMsg" class="msg hidden"></p>
+      <div class="btn-row column">
+        <button id="againBtn" class="btn primary" type="button">↻ Run again</button>
+        <button id="menuBtn" class="btn ghost" type="button">⌂ Main menu</button>
+        <button id="signInBtn" class="btn ghost mini hidden" type="button">Sign in to save your score</button>
+      </div>
+      <div id="finalBoardWrap" class="board hidden">
+        <h3>Top runs <small>start.ng</small></h3>
+        <ol id="finalBoard"></ol>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="startng.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
